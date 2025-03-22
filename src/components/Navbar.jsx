@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, User } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 import { navItems, catItems } from "../constants";
 
@@ -19,7 +20,12 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 py-2 backdrop-blur-lg border-b border-neutral-200/80">
-      <div className="container px-4 mx-auto relative text-sm">
+      <motion.div
+        className="container px-4 mx-auto relative text-sm"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
+      >
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0">
             <Link to="/">
@@ -41,8 +47,8 @@ const Navbar = () => {
 
             <li
               className="relative group cursor-pointer"
-              onClick={() => setDropdownOpen(true)}
-              onMouseEnter={() => setDropdownOpen(false)}
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
             >
               <div className="flex items-center gap-1">
                 Categories <ChevronDown size={18} />
@@ -55,7 +61,7 @@ const Navbar = () => {
                       key={index}
                       className="px-4 py-2 hover:bg-[#703921] hover:rounded-md"
                     >
-                      <a href={item.href}>{item.label}</a>
+                      <Link to={item.href}>{item.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -70,16 +76,16 @@ const Navbar = () => {
             >
               <User size={16} /> {isSignedIn ? "Sign Out" : "Sign In"}
             </button>
-            <a
-              href="/pricing"
+            <Link
+              to="/pricing"
               className="bg-gradient-to-r from-amber-700 to-amber-900 py-2 px-3 rounded-md text-neutral-200 hover:text-neutral-100"
             >
               Book Now
-            </a>
+            </Link>
           </div>
 
           <div className="lg:hidden md:flex flex flex-col justify-end">
-            <button onClick={toggleNavbar}>
+            <button onClick={toggleNavbar} aria-label="Toggle navigation menu">
               {mobileDrawerOpen ? <X /> : <Menu />}
             </button>
           </div>
@@ -90,7 +96,7 @@ const Navbar = () => {
             <ul>
               {navItems.map((item, index) => (
                 <li className="pb-2" key={index}>
-                  <a href={item.href}>{item.label}</a>
+                  <Link to={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -101,16 +107,16 @@ const Navbar = () => {
               >
                 <User size={16} /> {isSignedIn ? "Sign Out" : "Sign In"}
               </button>
-              <a
-                href="/pricing"
+              <Link
+                to="/pricing"
                 className="bg-gradient-to-r from-amber-700 to-amber-900 py-2 px-3 rounded-md text-neutral-200 hover:text-neutral-100 text-center"
               >
                 Book Now
-              </a>
+              </Link>
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </nav>
   );
 };

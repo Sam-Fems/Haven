@@ -4,11 +4,30 @@ import Room3 from "../assets/guest(3).png";
 import Room4 from "../assets/guest(4).png";
 import Room5 from "../assets/guest(5).png";
 import Room6 from "../assets/guest(6).png";
+import { motion, useScroll } from "framer-motion";
 
 const GuestsRooms = () => {
+  const { scrollYProgress } = useScroll();
+
   return (
     <>
-      <h1 className="text-5xl text-center mt-10">
+    <div>
+      <motion.div
+                  id="scroll-indicator"
+                  style={{
+                    scaleX: scrollYProgress,
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 6,
+                    originX: 0,
+                    backgroundColor: "#522c1c",
+                    zIndex: 50,
+                  }}
+                />
+
+    <h1 className="text-5xl text-center mt-10">
         <span className="bg-gradient-to-r from-neutral-300 to-neutral-600 text-transparent bg-clip-text">
           Guest
         </span>{" "}
@@ -42,6 +61,8 @@ const GuestsRooms = () => {
           <p className="text-3xl font-semibold mt-2 max-sm:text-2xl bg-gradient-to-r from-neutral-300 to-neutral-500 text-transparent bg-clip-text">Family Guest Room</p>
         </div>
       </div>
+    </div>
+      
     </>
   );
 };

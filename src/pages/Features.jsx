@@ -25,6 +25,7 @@ const features = [
 
 const Features = () => {
   return (
+    <div>
       <section className="py-14">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-center text-7xl max-sm:text-4xl max-sm:mb-2">
@@ -50,6 +51,8 @@ const Features = () => {
           ))}
         </div>
       </section>
+    </div>
+    
   );
 };
 

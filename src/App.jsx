@@ -9,11 +9,28 @@ import Footer from "./components/Footer";
 import GuestsRooms from "./pages/GuestsRooms";
 import SuitesRooms from "./pages/SuitesRooms";
 import LuxuryRooms from "./pages/LuxuryRooms";
+import { motion, useScroll } from "framer-motion";
 
 function App() {
+  const { scrollYProgress } = useScroll();
+
   return (
     <>
       <Navbar />
+      <motion.div
+        id="scroll-indicator"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 6,
+          originX: 0,
+          backgroundColor: "#522c1c",
+          zIndex: 50,
+        }}
+      />
       <Routes>
         <Route path="/" index element={<Hero />} />
         <Route path="/features" element={<Features />} />
