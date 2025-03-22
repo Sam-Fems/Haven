@@ -15,7 +15,7 @@ const Pricing = () => {
       name: "Luxury-Palace",
       rating: 5,
       price: "$700/night",
-      href: "/luxury",
+      href: "/",
       button: "Book Now",
     },
     {
@@ -23,7 +23,7 @@ const Pricing = () => {
       name: "Guests Rooms",
       rating: 4,
       price: "$500/night",
-      href: "/guests",
+      href: "/",
       button: "Book Now",
     },
     {
@@ -31,7 +31,7 @@ const Pricing = () => {
       name: "Suites",
       rating: 4,
       price: "$600/night",
-      href: "/suites",
+      href: "/",
       button: "Book Now",
     },
     {
